@@ -16,6 +16,7 @@ namespace RegistroDetalle.BLL
         {
             bool paso = false;
             //Creamos una instancia del contexto para poder conectar con la BD
+            
             Contexto contexto = new Contexto();
             try
             {
