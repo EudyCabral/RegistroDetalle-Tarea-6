@@ -58,7 +58,7 @@ namespace RegistroDetalle.BLL
             return paso;
         }
 
-        public static bool Editar(Persona persona)
+        public static bool Editar(Personas persona)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
