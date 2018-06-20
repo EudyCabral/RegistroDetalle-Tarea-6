@@ -10,15 +10,20 @@ namespace RegistroDetalle.ENTIDADES
     {
         [Key]
         public int ArticuloId { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime Fecha { get; set; }
         public string Nombre { get; set; }
-     
+        public string Descripcion { get; set; }
+        public int Cantidad { get; set; }
+
+
 
         public Articulos()
         {
             ArticuloId = 0;
-            this.dateTime = DateTime.Now;
+            Fecha = DateTime.Now;
             Nombre =string.Empty;
+            Cantidad = 0;
+            Descripcion = string.Empty;
           
         }
     }
