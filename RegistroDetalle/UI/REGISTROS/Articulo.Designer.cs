@@ -33,10 +33,10 @@
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label articuloIdLabel;
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Eliminarbutton = new System.Windows.Forms.Button();
+            this.Guardarbutton = new System.Windows.Forms.Button();
+            this.Nuevobutton = new System.Windows.Forms.Button();
+            this.Buscarbutton = new System.Windows.Forms.Button();
             this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cantidadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
@@ -51,41 +51,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.articuloIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // Eliminarbutton
             // 
-            this.button4.Location = new System.Drawing.Point(351, 254);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 30;
-            this.button4.Text = "Eliminar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Location = new System.Drawing.Point(351, 254);
+            this.Eliminarbutton.Name = "Eliminarbutton";
+            this.Eliminarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Eliminarbutton.TabIndex = 30;
+            this.Eliminarbutton.Text = "Eliminar";
+            this.Eliminarbutton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Guardarbutton
             // 
-            this.button3.Location = new System.Drawing.Point(216, 254);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Guardar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Guardarbutton.Location = new System.Drawing.Point(216, 254);
+            this.Guardarbutton.Name = "Guardarbutton";
+            this.Guardarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Guardarbutton.TabIndex = 29;
+            this.Guardarbutton.Text = "Guardar";
+            this.Guardarbutton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Nuevobutton
             // 
-            this.button2.Location = new System.Drawing.Point(81, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Nuevo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Location = new System.Drawing.Point(81, 254);
+            this.Nuevobutton.Name = "Nuevobutton";
+            this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
+            this.Nuevobutton.TabIndex = 28;
+            this.Nuevobutton.Text = "Nuevo";
+            this.Nuevobutton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // Buscarbutton
             // 
-            this.button1.Location = new System.Drawing.Point(238, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Location = new System.Drawing.Point(238, 32);
+            this.Buscarbutton.Name = "Buscarbutton";
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Buscarbutton.TabIndex = 27;
+            this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.UseVisualStyleBackColor = true;
             // 
             // fechaLabel
             // 
@@ -174,10 +174,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 308);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Eliminarbutton);
+            this.Controls.Add(this.Guardarbutton);
+            this.Controls.Add(this.Nuevobutton);
+            this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(fechaLabel);
             this.Controls.Add(this.fechaDateTimePicker);
             this.Controls.Add(cantidadLabel);
@@ -189,7 +189,7 @@
             this.Controls.Add(articuloIdLabel);
             this.Controls.Add(this.articuloIdNumericUpDown);
             this.Name = "Articulo";
-            this.Text = "Articulo";
+            this.Text = "Registro de Articulo";
             ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.articuloIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -199,10 +199,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Eliminarbutton;
+        private System.Windows.Forms.Button Guardarbutton;
+        private System.Windows.Forms.Button Nuevobutton;
+        private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
         private System.Windows.Forms.TextBox descripcionTextBox;
