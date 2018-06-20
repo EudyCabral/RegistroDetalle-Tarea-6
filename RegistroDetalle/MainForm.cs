@@ -35,5 +35,17 @@ namespace RegistroDetalle
             CPersona cp = new CPersona();
             cp.Show();
         }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CArticulos ca = new CArticulos();
+            ca.Show();
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

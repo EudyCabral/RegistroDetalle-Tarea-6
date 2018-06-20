@@ -31,24 +31,24 @@
             System.Windows.Forms.Label personaIdLabel;
             System.Windows.Forms.Label nombresLabel;
             System.Windows.Forms.Label fechaLabel;
-            System.Windows.Forms.Label cedulaLabel;
             System.Windows.Forms.Label direccionLabel;
+            System.Windows.Forms.Label cedulaLabel;
             System.Windows.Forms.Label telefonoLabel;
             this.personaIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.nombresTextBox = new System.Windows.Forms.TextBox();
             this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.cedulaTextBox = new System.Windows.Forms.TextBox();
             this.direccionTextBox = new System.Windows.Forms.TextBox();
-            this.telefonoTextBox = new System.Windows.Forms.TextBox();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Eliminarbutton = new System.Windows.Forms.Button();
+            this.cedulaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.telefonoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             personaIdLabel = new System.Windows.Forms.Label();
             nombresLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
-            cedulaLabel = new System.Windows.Forms.Label();
             direccionLabel = new System.Windows.Forms.Label();
+            cedulaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.personaIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -80,15 +80,6 @@
             fechaLabel.TabIndex = 5;
             fechaLabel.Text = "Fecha:";
             // 
-            // cedulaLabel
-            // 
-            cedulaLabel.AutoSize = true;
-            cedulaLabel.Location = new System.Drawing.Point(21, 168);
-            cedulaLabel.Name = "cedulaLabel";
-            cedulaLabel.Size = new System.Drawing.Size(43, 13);
-            cedulaLabel.TabIndex = 7;
-            cedulaLabel.Text = "Cedula:";
-            // 
             // direccionLabel
             // 
             direccionLabel.AutoSize = true;
@@ -97,15 +88,6 @@
             direccionLabel.Size = new System.Drawing.Size(55, 13);
             direccionLabel.TabIndex = 9;
             direccionLabel.Text = "Direccion:";
-            // 
-            // telefonoLabel
-            // 
-            telefonoLabel.AutoSize = true;
-            telefonoLabel.Location = new System.Drawing.Point(21, 294);
-            telefonoLabel.Name = "telefonoLabel";
-            telefonoLabel.Size = new System.Drawing.Size(52, 13);
-            telefonoLabel.TabIndex = 11;
-            telefonoLabel.Text = "Telefono:";
             // 
             // personaIdNumericUpDown
             // 
@@ -129,26 +111,13 @@
             this.fechaDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.fechaDateTimePicker.TabIndex = 6;
             // 
-            // cedulaTextBox
-            // 
-            this.cedulaTextBox.Location = new System.Drawing.Point(84, 165);
-            this.cedulaTextBox.Name = "cedulaTextBox";
-            this.cedulaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.cedulaTextBox.TabIndex = 8;
-            // 
             // direccionTextBox
             // 
             this.direccionTextBox.Location = new System.Drawing.Point(84, 220);
+            this.direccionTextBox.Multiline = true;
             this.direccionTextBox.Name = "direccionTextBox";
-            this.direccionTextBox.Size = new System.Drawing.Size(100, 20);
+            this.direccionTextBox.Size = new System.Drawing.Size(100, 53);
             this.direccionTextBox.TabIndex = 10;
-            // 
-            // telefonoTextBox
-            // 
-            this.telefonoTextBox.Location = new System.Drawing.Point(84, 291);
-            this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.telefonoTextBox.TabIndex = 12;
             // 
             // Buscarbutton
             // 
@@ -158,6 +127,7 @@
             this.Buscarbutton.TabIndex = 13;
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // Nuevobutton
             // 
@@ -167,6 +137,7 @@
             this.Nuevobutton.TabIndex = 14;
             this.Nuevobutton.Text = "Nuevo";
             this.Nuevobutton.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
             // Guardarbutton
             // 
@@ -176,6 +147,7 @@
             this.Guardarbutton.TabIndex = 15;
             this.Guardarbutton.Text = "Guardar";
             this.Guardarbutton.UseVisualStyleBackColor = true;
+            this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
             // 
             // Eliminarbutton
             // 
@@ -185,22 +157,58 @@
             this.Eliminarbutton.TabIndex = 16;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
+            // 
+            // cedulaLabel
+            // 
+            cedulaLabel.AutoSize = true;
+            cedulaLabel.Location = new System.Drawing.Point(21, 160);
+            cedulaLabel.Name = "cedulaLabel";
+            cedulaLabel.Size = new System.Drawing.Size(43, 13);
+            cedulaLabel.TabIndex = 17;
+            cedulaLabel.Text = "Cedula:";
+          
+            // 
+            // cedulaMaskedTextBox
+            // 
+            this.cedulaMaskedTextBox.Location = new System.Drawing.Point(84, 157);
+            this.cedulaMaskedTextBox.Mask = "000-0000000-0";
+            this.cedulaMaskedTextBox.Name = "cedulaMaskedTextBox";
+            this.cedulaMaskedTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cedulaMaskedTextBox.TabIndex = 18;
+            // 
+            // telefonoLabel
+            // 
+            telefonoLabel.AutoSize = true;
+            telefonoLabel.Location = new System.Drawing.Point(21, 282);
+            telefonoLabel.Name = "telefonoLabel";
+            telefonoLabel.Size = new System.Drawing.Size(52, 13);
+            telefonoLabel.TabIndex = 18;
+            telefonoLabel.Text = "Telefono:";
+            // 
+            // telefonoMaskedTextBox
+            // 
+            this.telefonoMaskedTextBox.Location = new System.Drawing.Point(84, 279);
+            this.telefonoMaskedTextBox.Mask = "000-000-0000";
+            this.telefonoMaskedTextBox.Name = "telefonoMaskedTextBox";
+            this.telefonoMaskedTextBox.Size = new System.Drawing.Size(100, 20);
+            this.telefonoMaskedTextBox.TabIndex = 19;
             // 
             // Persona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 430);
+            this.ClientSize = new System.Drawing.Size(521, 430);
+            this.Controls.Add(telefonoLabel);
+            this.Controls.Add(this.telefonoMaskedTextBox);
+            this.Controls.Add(cedulaLabel);
+            this.Controls.Add(this.cedulaMaskedTextBox);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.Buscarbutton);
-            this.Controls.Add(telefonoLabel);
-            this.Controls.Add(this.telefonoTextBox);
             this.Controls.Add(direccionLabel);
             this.Controls.Add(this.direccionTextBox);
-            this.Controls.Add(cedulaLabel);
-            this.Controls.Add(this.cedulaTextBox);
             this.Controls.Add(fechaLabel);
             this.Controls.Add(this.fechaDateTimePicker);
             this.Controls.Add(nombresLabel);
@@ -219,12 +227,12 @@
         private System.Windows.Forms.NumericUpDown personaIdNumericUpDown;
         private System.Windows.Forms.TextBox nombresTextBox;
         private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
-        private System.Windows.Forms.TextBox cedulaTextBox;
         private System.Windows.Forms.TextBox direccionTextBox;
-        private System.Windows.Forms.TextBox telefonoTextBox;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Button Eliminarbutton;
+        private System.Windows.Forms.MaskedTextBox cedulaMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox telefonoMaskedTextBox;
     }
 }
