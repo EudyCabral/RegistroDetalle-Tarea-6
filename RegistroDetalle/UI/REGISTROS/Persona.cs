@@ -35,56 +35,96 @@ namespace RegistroDetalle.UI.REGISTROS
           
             bool Paso = false;
             Personas personas = Llenaclase();
-            if (personaIdNumericUpDown.Value == 0)
-                Paso = BLL.PersonasBLL.Guardar(personas);
-            else
-               
-                Paso = BLL.PersonasBLL.Editar(personas);
 
-            if(Paso)
+            if (ValidarGuardar())
             {
-                MessageBox.Show("Guardar", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             else
             {
-                MessageBox.Show("No Pudo Guardar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (personaIdNumericUpDown.Value == 0)
+                    Paso = BLL.PersonasBLL.Guardar(personas);
+                else
+
+                    Paso = BLL.PersonasBLL.Editar(personas);
+
+                if (Paso)
+                {
+                    MessageBox.Show("Guardar", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No Pudo Guardar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+                GeneralerrorProvider.Clear();
+                Limpiar();
             }
         }
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(personaIdNumericUpDown.Value);
-            Personas personas = BLL.PersonasBLL.Buscar(id);
 
-            if(personas != null)
+            if (Validar())
             {
-                personaIdNumericUpDown.Value=personas.PersonaId ;
-                nombresTextBox.Text = personas.Nombres ;
-                fechaDateTimePicker.Value = personas.Fecha;
-                cedulaMaskedTextBox.Text = personas.Cedula;
-                direccionTextBox.Text = personas.Direccion;
-                telefonoMaskedTextBox.Text = personas.Telefono;
-
+                MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("No fue Encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+                int id = Convert.ToInt32(personaIdNumericUpDown.Value);
+                Personas personas = BLL.PersonasBLL.Buscar(id);
+
+                if (personas != null)
+                {
+                    personaIdNumericUpDown.Value = personas.PersonaId;
+                    nombresTextBox.Text = personas.Nombres;
+                    fechaDateTimePicker.Value = personas.Fecha;
+                    cedulaMaskedTextBox.Text = personas.Cedula;
+                    direccionTextBox.Text = personas.Direccion;
+                    telefonoMaskedTextBox.Text = personas.Telefono;
+                    GeneralerrorProvider.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No fue Encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    GeneralerrorProvider.Clear();
+                }
             }
+           
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(personaIdNumericUpDown.Value);
-
-            if(BLL.PersonasBLL.Eliminar(id))
+            if (ValidarEliminar())
             {
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            MessageBox.Show("No fue Eliminado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+            else
+            {
+                int id = Convert.ToInt32(personaIdNumericUpDown.Value);
+
+                if (BLL.PersonasBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No fue Eliminado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                Limpiar();
+                GeneralerrorProvider.Clear();
+            }
         }
 
         private void Nuevobutton_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        public void Limpiar()
         {
             personaIdNumericUpDown.Value = 0;
             nombresTextBox.Clear();
@@ -92,8 +132,56 @@ namespace RegistroDetalle.UI.REGISTROS
             cedulaMaskedTextBox.Clear();
             direccionTextBox.Clear();
             telefonoMaskedTextBox.Clear();
+            GeneralerrorProvider.Clear();
         }
 
-      
+        private bool Validar()
+        {
+            bool error = false;
+            if (personaIdNumericUpDown.Value == 0)
+            {
+                GeneralerrorProvider.SetError(personaIdNumericUpDown, "Llenar Casilla Persona ID");
+                error = true;
+            }
+
+            return error;
+        }
+
+
+        public bool ValidarEliminar()
+        {
+            bool Error = false;
+         
+            if (personaIdNumericUpDown.Value == 0)
+            {
+                GeneralerrorProvider.SetError(personaIdNumericUpDown, "Llenar Casilla Persona ID");
+                Error = true;
+            }
+            return Error;
+        }
+
+        public bool ValidarGuardar()
+        {
+            bool Error = false;
+
+            if (String.IsNullOrEmpty(nombresTextBox.Text))
+            {
+                GeneralerrorProvider.SetError(nombresTextBox, "Llenar Casilla de Nombre");
+                Error = true;
+            }
+
+
+            if (String.IsNullOrEmpty(direccionTextBox.Text))
+            {
+                GeneralerrorProvider.SetError(direccionTextBox, "Llenar Casilla de Direccion");
+                Error = true;
+            }
+            return Error;
+        }
+
+        private void Persona_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label personaIdLabel;
             System.Windows.Forms.Label nombresLabel;
             System.Windows.Forms.Label fechaLabel;
@@ -44,6 +45,7 @@
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.cedulaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.telefonoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.GeneralerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             personaIdLabel = new System.Windows.Forms.Label();
             nombresLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
@@ -51,6 +53,7 @@
             cedulaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.personaIdNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // personaIdLabel
@@ -88,6 +91,24 @@
             direccionLabel.Size = new System.Drawing.Size(55, 13);
             direccionLabel.TabIndex = 9;
             direccionLabel.Text = "Direccion:";
+            // 
+            // cedulaLabel
+            // 
+            cedulaLabel.AutoSize = true;
+            cedulaLabel.Location = new System.Drawing.Point(21, 160);
+            cedulaLabel.Name = "cedulaLabel";
+            cedulaLabel.Size = new System.Drawing.Size(43, 13);
+            cedulaLabel.TabIndex = 17;
+            cedulaLabel.Text = "Cedula:";
+            // 
+            // telefonoLabel
+            // 
+            telefonoLabel.AutoSize = true;
+            telefonoLabel.Location = new System.Drawing.Point(21, 282);
+            telefonoLabel.Name = "telefonoLabel";
+            telefonoLabel.Size = new System.Drawing.Size(52, 13);
+            telefonoLabel.TabIndex = 18;
+            telefonoLabel.Text = "Telefono:";
             // 
             // personaIdNumericUpDown
             // 
@@ -159,16 +180,6 @@
             this.Eliminarbutton.UseVisualStyleBackColor = true;
             this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
-            // cedulaLabel
-            // 
-            cedulaLabel.AutoSize = true;
-            cedulaLabel.Location = new System.Drawing.Point(21, 160);
-            cedulaLabel.Name = "cedulaLabel";
-            cedulaLabel.Size = new System.Drawing.Size(43, 13);
-            cedulaLabel.TabIndex = 17;
-            cedulaLabel.Text = "Cedula:";
-          
-            // 
             // cedulaMaskedTextBox
             // 
             this.cedulaMaskedTextBox.Location = new System.Drawing.Point(84, 157);
@@ -177,15 +188,6 @@
             this.cedulaMaskedTextBox.Size = new System.Drawing.Size(100, 20);
             this.cedulaMaskedTextBox.TabIndex = 18;
             // 
-            // telefonoLabel
-            // 
-            telefonoLabel.AutoSize = true;
-            telefonoLabel.Location = new System.Drawing.Point(21, 282);
-            telefonoLabel.Name = "telefonoLabel";
-            telefonoLabel.Size = new System.Drawing.Size(52, 13);
-            telefonoLabel.TabIndex = 18;
-            telefonoLabel.Text = "Telefono:";
-            // 
             // telefonoMaskedTextBox
             // 
             this.telefonoMaskedTextBox.Location = new System.Drawing.Point(84, 279);
@@ -193,6 +195,10 @@
             this.telefonoMaskedTextBox.Name = "telefonoMaskedTextBox";
             this.telefonoMaskedTextBox.Size = new System.Drawing.Size(100, 20);
             this.telefonoMaskedTextBox.TabIndex = 19;
+            // 
+            // GeneralerrorProvider
+            // 
+            this.GeneralerrorProvider.ContainerControl = this;
             // 
             // Persona
             // 
@@ -217,7 +223,9 @@
             this.Controls.Add(this.personaIdNumericUpDown);
             this.Name = "Persona";
             this.Text = "Registro de Persona";
+            this.Load += new System.EventHandler(this.Persona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.personaIdNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +242,6 @@
         private System.Windows.Forms.Button Eliminarbutton;
         private System.Windows.Forms.MaskedTextBox cedulaMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox telefonoMaskedTextBox;
+        private System.Windows.Forms.ErrorProvider GeneralerrorProvider;
     }
 }

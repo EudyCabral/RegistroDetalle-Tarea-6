@@ -13,8 +13,8 @@ namespace RegistroDetalle.ENTIDADES
         public DateTime Fecha { get; set; }
         public string Nombres { get; set; }
         public string Cedula { get; set; }
+        public string Direccion { get; set;}
         public string Telefono { get; set; }
-        public string Direccion { get; set; }
 
 
 
@@ -24,8 +24,8 @@ namespace RegistroDetalle.ENTIDADES
             Fecha = DateTime.Now;
             Nombres = string.Empty;
             Cedula = string.Empty;
-            Telefono = string.Empty;
             Direccion = string.Empty;
+            Telefono = string.Empty;
         }
     }
 }

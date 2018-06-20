@@ -22,9 +22,8 @@ namespace RegistroDetalle.ENTIDADES
             ArticuloId = 0;
             Fecha = DateTime.Now;
             Nombre =string.Empty;
-            Cantidad = 0;
             Descripcion = string.Empty;
-          
+            Cantidad = 0;
         }
     }
 }
