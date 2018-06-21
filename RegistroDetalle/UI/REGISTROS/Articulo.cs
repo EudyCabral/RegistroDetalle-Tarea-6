@@ -148,7 +148,7 @@ namespace RegistroDetalle.UI.REGISTROS
 
             return error;
         }
-
+        //
 
         public bool ValidarEliminar()
         {
