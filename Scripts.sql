@@ -24,3 +24,28 @@ create Table Articulos
             Cantidad  int
 );
 go
+
+go
+create Table CotizacionArticulos
+(
+		 CotizacionArticulosId int primary key identity(1,1),
+         Fecha DateTime  ,
+         Observaciones  varchar(max)
+);
+go
+
+go
+create Table CotizacionArticulosDetalle
+(
+			Id int primary key identity(1,1),
+            CotizacionArticulosId  int,
+            PersonaId int,
+            ArticuloId int,
+            Cantidad int,
+            Precio money,
+            Importe money
+);
+go
+
+
+
