@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Imprimirbutton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ConsultadataGridView = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.HastadateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -40,7 +41,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.GeneralerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // Imprimirbutton
@@ -52,13 +55,13 @@
             this.Imprimirbutton.Text = "Imprimir";
             this.Imprimirbutton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // ConsultadataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(563, 301);
-            this.dataGridView1.TabIndex = 34;
+            this.ConsultadataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConsultadataGridView.Location = new System.Drawing.Point(3, 98);
+            this.ConsultadataGridView.Name = "ConsultadataGridView";
+            this.ConsultadataGridView.Size = new System.Drawing.Size(563, 301);
+            this.ConsultadataGridView.TabIndex = 34;
             // 
             // label4
             // 
@@ -114,6 +117,7 @@
             this.Buscarbutton.TabIndex = 28;
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // CriteriotextBox
             // 
@@ -157,13 +161,17 @@
             this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
             this.FiltrocomboBox.TabIndex = 24;
             // 
+            // GeneralerrorProvider
+            // 
+            this.GeneralerrorProvider.ContainerControl = this;
+            // 
             // CArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 450);
             this.Controls.Add(this.Imprimirbutton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.HastadateTimePicker);
@@ -176,7 +184,8 @@
             this.Controls.Add(this.FiltrocomboBox);
             this.Name = "CArticulos";
             this.Text = "Consulta de Articulos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +194,7 @@
         #endregion
 
         private System.Windows.Forms.Button Imprimirbutton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ConsultadataGridView;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker HastadateTimePicker;
@@ -196,5 +205,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox FiltrocomboBox;
+        private System.Windows.Forms.ErrorProvider GeneralerrorProvider;
     }
 }

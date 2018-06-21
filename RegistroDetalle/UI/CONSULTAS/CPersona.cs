@@ -53,7 +53,7 @@ namespace RegistroDetalle.UI.CONSULTAS
                         if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
                         {
                             MessageBox.Show("Este ID, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
+
                         }
                         GeneralerrorProvider.Clear();
                     }
@@ -72,22 +72,22 @@ namespace RegistroDetalle.UI.CONSULTAS
                         return;
                     }
                     else
-                    { 
-                    if (FechacheckBox.Checked == true)
                     {
-                        filtro = x => x.Nombres.Contains(CriteriotextBox.Text)
-                        && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
-                    }
-                    else
-                    {
-                        filtro = x => x.Nombres.Contains(CriteriotextBox.Text);
-                    }
-                    if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
-                    {
-                        MessageBox.Show("Este Nombre, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                       
-                    }
-                    GeneralerrorProvider.Clear();
+                        if (FechacheckBox.Checked == true)
+                        {
+                            filtro = x => x.Nombres.Contains(CriteriotextBox.Text)
+                            && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
+                        }
+                        else
+                        {
+                            filtro = x => x.Nombres.Contains(CriteriotextBox.Text);
+                        }
+                        if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
+                        {
+                            MessageBox.Show("Este Nombre, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        GeneralerrorProvider.Clear();
                     }
                     break;
                 case 2:// cedula
@@ -103,22 +103,23 @@ namespace RegistroDetalle.UI.CONSULTAS
                         MessageBox.Show("Debe usar los Guiones", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else { 
-                    if (FechacheckBox.Checked == true)
-                    {
-                        filtro = x => x.Cedula.Equals(CriteriotextBox.Text)
-                        && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
-                    }
                     else
                     {
-                        filtro = x => x.Cedula.Equals(CriteriotextBox.Text);
-                    }
-                    if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
-                    {
-                        MessageBox.Show("Esta Cedula, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                      
-                    }
-                    GeneralerrorProvider.Clear();
+                        if (FechacheckBox.Checked == true)
+                        {
+                            filtro = x => x.Cedula.Equals(CriteriotextBox.Text)
+                            && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
+                        }
+                        else
+                        {
+                            filtro = x => x.Cedula.Equals(CriteriotextBox.Text);
+                        }
+                        if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
+                        {
+                            MessageBox.Show("Esta Cedula, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        GeneralerrorProvider.Clear();
                     }
 
                     break;
@@ -135,24 +136,25 @@ namespace RegistroDetalle.UI.CONSULTAS
                         MessageBox.Show("Debe Escribir una Direccion", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else { 
-                    if (FechacheckBox.Checked == true)
-                    {
-                        filtro = x => x.Direccion.Contains(CriteriotextBox.Text)
-                    && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
-
-                    }
                     else
                     {
-                        filtro = x => x.Direccion.Contains(CriteriotextBox.Text);
+                        if (FechacheckBox.Checked == true)
+                        {
+                            filtro = x => x.Direccion.Contains(CriteriotextBox.Text)
+                        && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
 
-                    }
-                    if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
-                    {
-                        MessageBox.Show("Esta Direccion, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
-                    }
-                    GeneralerrorProvider.Clear();
+                        }
+                        else
+                        {
+                            filtro = x => x.Direccion.Contains(CriteriotextBox.Text);
+
+                        }
+                        if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
+                        {
+                            MessageBox.Show("Esta Direccion, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        GeneralerrorProvider.Clear();
                     }
 
 
@@ -185,7 +187,7 @@ namespace RegistroDetalle.UI.CONSULTAS
                         if (BLL.PersonasBLL.GetList(filtro).Count() == 0)
                         {
                             MessageBox.Show("Este Telefono, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                          
+
                         }
                         GeneralerrorProvider.Clear();
                     }
@@ -201,11 +203,11 @@ namespace RegistroDetalle.UI.CONSULTAS
                     GeneralerrorProvider.Clear();
                     break;
 
-                    
+
 
             }
 
-         
+
             ConsultadataGridView.DataSource = BLL.PersonasBLL.GetList(filtro);
 
 
@@ -244,7 +246,7 @@ namespace RegistroDetalle.UI.CONSULTAS
             return paso;
         }
 
-        
+
 
 
     }
