@@ -57,6 +57,7 @@
     <Compile Include="DAL\Repositorio.cs" />
     <Compile Include="ENTIDADES\Articulos.cs" />
     <Compile Include="ENTIDADES\CotizacionArticulos.cs" />
+    <Compile Include="ENTIDADES\CotizacionArticulosDetalle.cs" />
     <Compile Include="ENTIDADES\Personas.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
