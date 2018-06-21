@@ -1,4 +1,5 @@
 ﻿using RegistroDetalle.UI.CONSULTAS;
+using RegistroDetalle.UI.COTIZACION;
 using RegistroDetalle.UI.REGISTROS;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,12 @@ namespace RegistroDetalle
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cotizacionDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CotizacionArticulos ca = new CotizacionArticulos();
+            ca.Show();
         }
     }
 }
