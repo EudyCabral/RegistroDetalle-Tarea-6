@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ArticulosBLL.cs" />
+    <Compile Include="BLL\CotizacionArticulosBLL.cs" />
     <Compile Include="BLL\PersonasBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="DAL\IRepository.cs" />
@@ -127,6 +128,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\RegistroDetalle.ENTIDADES.Articulos.datasource" />
+    <None Include="Properties\DataSources\RegistroDetalle.ENTIDADES.CotizacionArticulos.datasource" />
+    <None Include="Properties\DataSources\RegistroDetalle.ENTIDADES.CotizacionArticulosDetalle.datasource" />
     <None Include="Properties\DataSources\RegistroDetalle.ENTIDADES.Personas.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

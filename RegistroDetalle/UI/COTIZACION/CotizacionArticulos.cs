@@ -15,5 +15,25 @@ namespace RegistroDetalle.UI.COTIZACION
         {
             InitializeComponent();
         }
+
+        private void articuloIdLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void precioLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void importeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void observacionesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

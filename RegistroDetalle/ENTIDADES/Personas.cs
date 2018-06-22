@@ -17,7 +17,6 @@ namespace RegistroDetalle.ENTIDADES
         public string Telefono { get; set; }
 
 
-
         public Personas()
         {
             PersonaId = 0;
@@ -27,5 +26,6 @@ namespace RegistroDetalle.ENTIDADES
             Direccion = string.Empty;
             Telefono = string.Empty;
         }
+
     }
 }
