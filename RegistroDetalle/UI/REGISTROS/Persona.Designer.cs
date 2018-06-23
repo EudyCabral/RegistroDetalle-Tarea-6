@@ -35,6 +35,7 @@
             System.Windows.Forms.Label direccionLabel;
             System.Windows.Forms.Label cedulaLabel;
             System.Windows.Forms.Label telefonoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Persona));
             this.personaIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.nombresTextBox = new System.Windows.Forms.TextBox();
             this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -142,41 +143,52 @@
             // 
             // Buscarbutton
             // 
-            this.Buscarbutton.Location = new System.Drawing.Point(213, 37);
+            this.Buscarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Search_32;
+            this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Buscarbutton.Location = new System.Drawing.Point(213, 25);
             this.Buscarbutton.Name = "Buscarbutton";
-            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 48);
             this.Buscarbutton.TabIndex = 13;
             this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Buscarbutton.UseVisualStyleBackColor = true;
             this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // Nuevobutton
             // 
-            this.Nuevobutton.Location = new System.Drawing.Point(69, 366);
+            this.Nuevobutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Add_New_32;
+            this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Nuevobutton.Location = new System.Drawing.Point(69, 327);
             this.Nuevobutton.Name = "Nuevobutton";
-            this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
+            this.Nuevobutton.Size = new System.Drawing.Size(75, 52);
             this.Nuevobutton.TabIndex = 14;
             this.Nuevobutton.Text = "Nuevo";
+            this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Nuevobutton.UseVisualStyleBackColor = true;
             this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
             // Guardarbutton
             // 
-            this.Guardarbutton.Location = new System.Drawing.Point(213, 366);
+            this.Guardarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Save_32;
+            this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Guardarbutton.Location = new System.Drawing.Point(213, 327);
             this.Guardarbutton.Name = "Guardarbutton";
-            this.Guardarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Guardarbutton.Size = new System.Drawing.Size(75, 52);
             this.Guardarbutton.TabIndex = 15;
             this.Guardarbutton.Text = "Guardar";
+            this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Guardarbutton.UseVisualStyleBackColor = true;
             this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
             // 
             // Eliminarbutton
             // 
-            this.Eliminarbutton.Location = new System.Drawing.Point(357, 366);
+            this.Eliminarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Delete_32;
+            this.Eliminarbutton.Location = new System.Drawing.Point(357, 327);
             this.Eliminarbutton.Name = "Eliminarbutton";
-            this.Eliminarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Eliminarbutton.Size = new System.Drawing.Size(75, 52);
             this.Eliminarbutton.TabIndex = 16;
             this.Eliminarbutton.Text = "Eliminar";
+            this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
             this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
@@ -204,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 430);
+            this.ClientSize = new System.Drawing.Size(521, 391);
             this.Controls.Add(telefonoLabel);
             this.Controls.Add(this.telefonoMaskedTextBox);
             this.Controls.Add(cedulaLabel);
@@ -221,6 +233,7 @@
             this.Controls.Add(this.nombresTextBox);
             this.Controls.Add(personaIdLabel);
             this.Controls.Add(this.personaIdNumericUpDown);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Persona";
             this.Text = "Registro de Persona";
             this.Load += new System.EventHandler(this.Persona_Load);

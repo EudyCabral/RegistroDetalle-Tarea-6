@@ -109,6 +109,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\CONSULTAS\CArticulos.resx">
       <DependentUpon>CArticulos.cs</DependentUpon>
@@ -143,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\SCRIPTS\Scripts.sql" />
+    <None Include="Resources\icons8_Search_32.png" />
+    <None Include="Resources\icons8_Add_New_32.png" />
+    <None Include="Resources\icons8_Delete_32.png" />
+    <None Include="Resources\icons8_Save_32.png" />
+    <None Include="Resources\icons8_More_Details_32.png" />
+    <None Include="Resources\icons8_New_Window_32.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

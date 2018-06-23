@@ -37,24 +37,25 @@
             System.Windows.Forms.Label cantidadLabel;
             System.Windows.Forms.Label precioLabel;
             System.Windows.Forms.Label importeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CotizacionArticulosf));
             this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.observacionesTextBox = new System.Windows.Forms.TextBox();
             this.personaComboBox = new System.Windows.Forms.ComboBox();
             this.articuloComboBox = new System.Windows.Forms.ComboBox();
             this.precioTextBox = new System.Windows.Forms.TextBox();
             this.importeTextBox = new System.Windows.Forms.TextBox();
-            this.Agregarbutton = new System.Windows.Forms.Button();
             this.detalledataGridView = new System.Windows.Forms.DataGridView();
-            this.Nuevobutton = new System.Windows.Forms.Button();
-            this.Guardarbutton = new System.Windows.Forms.Button();
-            this.Eliminarbutton = new System.Windows.Forms.Button();
-            this.Buscarbutton = new System.Windows.Forms.Button();
             this.cotizacionArticulosIdnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.Removerbutton = new System.Windows.Forms.Button();
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cantidadnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.HayErrores = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Removerbutton = new System.Windows.Forms.Button();
+            this.Buscarbutton = new System.Windows.Forms.Button();
+            this.Eliminarbutton = new System.Windows.Forms.Button();
+            this.Guardarbutton = new System.Windows.Forms.Button();
+            this.Nuevobutton = new System.Windows.Forms.Button();
+            this.Agregarbutton = new System.Windows.Forms.Button();
             cotizacionArticulosIdLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
             observacionesLabel = new System.Windows.Forms.Label();
@@ -72,7 +73,7 @@
             // cotizacionArticulosIdLabel
             // 
             cotizacionArticulosIdLabel.AutoSize = true;
-            cotizacionArticulosIdLabel.Location = new System.Drawing.Point(12, 17);
+            cotizacionArticulosIdLabel.Location = new System.Drawing.Point(10, 32);
             cotizacionArticulosIdLabel.Name = "cotizacionArticulosIdLabel";
             cotizacionArticulosIdLabel.Size = new System.Drawing.Size(114, 13);
             cotizacionArticulosIdLabel.TabIndex = 1;
@@ -192,16 +193,6 @@
             this.importeTextBox.Size = new System.Drawing.Size(100, 20);
             this.importeTextBox.TabIndex = 16;
             // 
-            // Agregarbutton
-            // 
-            this.Agregarbutton.Location = new System.Drawing.Point(534, 119);
-            this.Agregarbutton.Name = "Agregarbutton";
-            this.Agregarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Agregarbutton.TabIndex = 17;
-            this.Agregarbutton.Text = "Agregar";
-            this.Agregarbutton.UseVisualStyleBackColor = true;
-            this.Agregarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
-            // 
             // detalledataGridView
             // 
             this.detalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -210,66 +201,16 @@
             this.detalledataGridView.Size = new System.Drawing.Size(765, 233);
             this.detalledataGridView.TabIndex = 18;
             // 
-            // Nuevobutton
-            // 
-            this.Nuevobutton.Location = new System.Drawing.Point(219, 453);
-            this.Nuevobutton.Name = "Nuevobutton";
-            this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
-            this.Nuevobutton.TabIndex = 19;
-            this.Nuevobutton.Text = "Nuevo";
-            this.Nuevobutton.UseVisualStyleBackColor = true;
-            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
-            // 
-            // Guardarbutton
-            // 
-            this.Guardarbutton.Location = new System.Drawing.Point(329, 453);
-            this.Guardarbutton.Name = "Guardarbutton";
-            this.Guardarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Guardarbutton.TabIndex = 20;
-            this.Guardarbutton.Text = "Guardar";
-            this.Guardarbutton.UseVisualStyleBackColor = true;
-            this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
-            // 
-            // Eliminarbutton
-            // 
-            this.Eliminarbutton.Location = new System.Drawing.Point(462, 453);
-            this.Eliminarbutton.Name = "Eliminarbutton";
-            this.Eliminarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Eliminarbutton.TabIndex = 21;
-            this.Eliminarbutton.Text = "Eliminar";
-            this.Eliminarbutton.UseVisualStyleBackColor = true;
-            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
-            // 
-            // Buscarbutton
-            // 
-            this.Buscarbutton.Location = new System.Drawing.Point(247, 12);
-            this.Buscarbutton.Name = "Buscarbutton";
-            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Buscarbutton.TabIndex = 22;
-            this.Buscarbutton.Text = "Buscar";
-            this.Buscarbutton.UseVisualStyleBackColor = true;
-            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
-            // 
             // cotizacionArticulosIdnumericUpDown
             // 
-            this.cotizacionArticulosIdnumericUpDown.Location = new System.Drawing.Point(123, 15);
+            this.cotizacionArticulosIdnumericUpDown.Location = new System.Drawing.Point(121, 30);
             this.cotizacionArticulosIdnumericUpDown.Name = "cotizacionArticulosIdnumericUpDown";
             this.cotizacionArticulosIdnumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.cotizacionArticulosIdnumericUpDown.TabIndex = 23;
             // 
-            // Removerbutton
-            // 
-            this.Removerbutton.Location = new System.Drawing.Point(15, 388);
-            this.Removerbutton.Name = "Removerbutton";
-            this.Removerbutton.Size = new System.Drawing.Size(75, 23);
-            this.Removerbutton.TabIndex = 24;
-            this.Removerbutton.Text = "Remover";
-            this.Removerbutton.UseVisualStyleBackColor = true;
-            this.Removerbutton.Click += new System.EventHandler(this.Removerbutton_Click);
-            // 
             // TotaltextBox
             // 
-            this.TotaltextBox.Location = new System.Drawing.Point(534, 410);
+            this.TotaltextBox.Location = new System.Drawing.Point(587, 410);
             this.TotaltextBox.Name = "TotaltextBox";
             this.TotaltextBox.ReadOnly = true;
             this.TotaltextBox.Size = new System.Drawing.Size(100, 20);
@@ -278,7 +219,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(557, 394);
+            this.label1.Location = new System.Drawing.Point(610, 394);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 26;
@@ -295,6 +236,84 @@
             // HayErrores
             // 
             this.HayErrores.ContainerControl = this;
+            // 
+            // Removerbutton
+            // 
+            this.Removerbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Delete_32;
+            this.Removerbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Removerbutton.Location = new System.Drawing.Point(15, 388);
+            this.Removerbutton.Name = "Removerbutton";
+            this.Removerbutton.Size = new System.Drawing.Size(85, 23);
+            this.Removerbutton.TabIndex = 24;
+            this.Removerbutton.Text = "Remover";
+            this.Removerbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Removerbutton.UseVisualStyleBackColor = true;
+            this.Removerbutton.Click += new System.EventHandler(this.Removerbutton_Click);
+            // 
+            // Buscarbutton
+            // 
+            this.Buscarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Search_32;
+            this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Buscarbutton.Location = new System.Drawing.Point(247, 12);
+            this.Buscarbutton.Name = "Buscarbutton";
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 54);
+            this.Buscarbutton.TabIndex = 22;
+            this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
+            // 
+            // Eliminarbutton
+            // 
+            this.Eliminarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Delete_32;
+            this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Eliminarbutton.Location = new System.Drawing.Point(462, 417);
+            this.Eliminarbutton.Name = "Eliminarbutton";
+            this.Eliminarbutton.Size = new System.Drawing.Size(75, 59);
+            this.Eliminarbutton.TabIndex = 21;
+            this.Eliminarbutton.Text = "Eliminar";
+            this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
+            // 
+            // Guardarbutton
+            // 
+            this.Guardarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Save_32;
+            this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Guardarbutton.Location = new System.Drawing.Point(329, 417);
+            this.Guardarbutton.Name = "Guardarbutton";
+            this.Guardarbutton.Size = new System.Drawing.Size(75, 59);
+            this.Guardarbutton.TabIndex = 20;
+            this.Guardarbutton.Text = "Guardar";
+            this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Guardarbutton.UseVisualStyleBackColor = true;
+            this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
+            // 
+            // Nuevobutton
+            // 
+            this.Nuevobutton.Image = global::RegistroDetalle.Properties.Resources.icons8_New_Window_32;
+            this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Nuevobutton.Location = new System.Drawing.Point(219, 417);
+            this.Nuevobutton.Name = "Nuevobutton";
+            this.Nuevobutton.Size = new System.Drawing.Size(75, 59);
+            this.Nuevobutton.TabIndex = 19;
+            this.Nuevobutton.Text = "Nuevo";
+            this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Nuevobutton.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
+            // 
+            // Agregarbutton
+            // 
+            this.Agregarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Add_New_32;
+            this.Agregarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Agregarbutton.Location = new System.Drawing.Point(534, 96);
+            this.Agregarbutton.Name = "Agregarbutton";
+            this.Agregarbutton.Size = new System.Drawing.Size(75, 46);
+            this.Agregarbutton.TabIndex = 17;
+            this.Agregarbutton.Text = "Agregar";
+            this.Agregarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Agregarbutton.UseVisualStyleBackColor = true;
+            this.Agregarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
             // 
             // CotizacionArticulosf
             // 
@@ -326,6 +345,7 @@
             this.Controls.Add(fechaLabel);
             this.Controls.Add(this.fechaDateTimePicker);
             this.Controls.Add(cotizacionArticulosIdLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CotizacionArticulosf";
             this.Text = "Cotizacion de Articulos";
             this.Load += new System.EventHandler(this.CotizacionArticulosf_Load);

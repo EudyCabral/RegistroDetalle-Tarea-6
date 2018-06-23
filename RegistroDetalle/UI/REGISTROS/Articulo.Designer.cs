@@ -35,6 +35,7 @@
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label articuloIdLabel;
             System.Windows.Forms.Label precioLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Articulo));
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
@@ -102,43 +103,63 @@
             articuloIdLabel.TabIndex = 17;
             articuloIdLabel.Text = "Articulo Id:";
             // 
+            // precioLabel
+            // 
+            precioLabel.AutoSize = true;
+            precioLabel.Location = new System.Drawing.Point(35, 241);
+            precioLabel.Name = "precioLabel";
+            precioLabel.Size = new System.Drawing.Size(40, 13);
+            precioLabel.TabIndex = 31;
+            precioLabel.Text = "Precio:";
+            // 
             // Eliminarbutton
             // 
-            this.Eliminarbutton.Location = new System.Drawing.Point(351, 272);
+            this.Eliminarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Delete_32;
+            this.Eliminarbutton.Location = new System.Drawing.Point(351, 264);
             this.Eliminarbutton.Name = "Eliminarbutton";
-            this.Eliminarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Eliminarbutton.Size = new System.Drawing.Size(75, 51);
             this.Eliminarbutton.TabIndex = 30;
             this.Eliminarbutton.Text = "Eliminar";
+            this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
             this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
-            this.Guardarbutton.Location = new System.Drawing.Point(216, 272);
+            this.Guardarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Save_32;
+            this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Guardarbutton.Location = new System.Drawing.Point(216, 264);
             this.Guardarbutton.Name = "Guardarbutton";
-            this.Guardarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Guardarbutton.Size = new System.Drawing.Size(75, 51);
             this.Guardarbutton.TabIndex = 29;
             this.Guardarbutton.Text = "Guardar";
+            this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Guardarbutton.UseVisualStyleBackColor = true;
             this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
             // 
             // Nuevobutton
             // 
-            this.Nuevobutton.Location = new System.Drawing.Point(81, 272);
+            this.Nuevobutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Add_New_32;
+            this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Nuevobutton.Location = new System.Drawing.Point(83, 264);
             this.Nuevobutton.Name = "Nuevobutton";
-            this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
+            this.Nuevobutton.Size = new System.Drawing.Size(75, 51);
             this.Nuevobutton.TabIndex = 28;
             this.Nuevobutton.Text = "Nuevo";
+            this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Nuevobutton.UseVisualStyleBackColor = true;
             this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
             // Buscarbutton
             // 
-            this.Buscarbutton.Location = new System.Drawing.Point(238, 32);
+            this.Buscarbutton.Image = global::RegistroDetalle.Properties.Resources.icons8_Search_32;
+            this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Buscarbutton.Location = new System.Drawing.Point(238, 21);
             this.Buscarbutton.Name = "Buscarbutton";
-            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 47);
             this.Buscarbutton.TabIndex = 27;
             this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Buscarbutton.UseVisualStyleBackColor = true;
             this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
@@ -183,15 +204,6 @@
             // 
             this.GeneralerrorProvider.ContainerControl = this;
             // 
-            // precioLabel
-            // 
-            precioLabel.AutoSize = true;
-            precioLabel.Location = new System.Drawing.Point(35, 241);
-            precioLabel.Name = "precioLabel";
-            precioLabel.Size = new System.Drawing.Size(40, 13);
-            precioLabel.TabIndex = 31;
-            precioLabel.Text = "Precio:";
-            // 
             // precioTextBox
             // 
             this.precioTextBox.Location = new System.Drawing.Point(103, 238);
@@ -203,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 308);
+            this.ClientSize = new System.Drawing.Size(520, 321);
             this.Controls.Add(precioLabel);
             this.Controls.Add(this.precioTextBox);
             this.Controls.Add(this.Eliminarbutton);
@@ -220,6 +232,7 @@
             this.Controls.Add(this.nombreTextBox);
             this.Controls.Add(articuloIdLabel);
             this.Controls.Add(this.articuloIdNumericUpDown);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Articulo";
             this.Text = "Registro de Articulo";
             this.Load += new System.EventHandler(this.Articulo_Load);
