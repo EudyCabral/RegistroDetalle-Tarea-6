@@ -21,10 +21,9 @@ namespace RegistroDetalle.ENTIDADES
         public string Descripcion { get; set; }
 
         [ForeignKey("ArticuloId")]
-     
-
         public virtual Articulos articulos { get; set; }
-        
+        //[NotMapped]
+        //public string Articulos { get; set; }
 
         public CotizacionArticulosDetalle()
         {
@@ -32,20 +31,28 @@ namespace RegistroDetalle.ENTIDADES
             CotizacionArticulosId = 0;
         }
 
-        public CotizacionArticulosDetalle(int id, int cotizacionArticulosId, int personaId, int articuloId, int cantidad, decimal precio, decimal importe)
+        public CotizacionArticulosDetalle(int id, int cotizacionArticulosId, int personaId, int articuloId, string descripcion, int cantidad, decimal precio, decimal importe)
         {
+          
+
             Id = id;
             CotizacionArticulosId = cotizacionArticulosId;
             PersonaId = personaId;
             ArticuloId = articuloId;
+            Descripcion = descripcion;
             Cantidad = cantidad;
             Precio = precio;
             Importe = importe;
+            
+
+
+
         }
-        public CotizacionArticulosDetalle(int articuloId, string descripcion, int cantidad, decimal precio, decimal importe)
+        public CotizacionArticulosDetalle(int cotizacionArticulosId, int articuloId, string descripcion, int cantidad, decimal precio, decimal importe)
         {
-            Descripcion = descripcion;
+            CotizacionArticulosId = cotizacionArticulosId;
             ArticuloId = articuloId;
+            Descripcion = descripcion;
             Cantidad = cantidad;
             Precio = precio;
             Importe = importe;

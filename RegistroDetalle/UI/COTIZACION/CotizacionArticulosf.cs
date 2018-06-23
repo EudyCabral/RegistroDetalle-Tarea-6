@@ -13,6 +13,7 @@ namespace RegistroDetalle.UI.COTIZACION
 {
     public partial class CotizacionArticulosf : Form
     {
+        decimal importe = 0;
         public CotizacionArticulosf()
         {
             InitializeComponent();
@@ -22,10 +23,11 @@ namespace RegistroDetalle.UI.COTIZACION
         private int ToInt(object valor)
         {
             int retorno = 0;
-                int.TryParse(valor.ToString(), out retorno);
+            int.TryParse(valor.ToString(), out retorno);
             return retorno;
 
         }
+
 
         private decimal ToDecimal(object valor)
         {
@@ -39,7 +41,7 @@ namespace RegistroDetalle.UI.COTIZACION
             Repositorio<Personas> repositorio = new Repositorio<Personas>(new Contexto());
             personaComboBox.DataSource = repositorio.GetList(c => true);
             personaComboBox.ValueMember = "PersonaId";
-            personaComboBox.DisplayMember = "Nombre";
+            personaComboBox.DisplayMember = "Nombres";
 
             Repositorio<Articulos> repositorioa = new Repositorio<Articulos>(new Contexto());
             articuloComboBox.DataSource = repositorioa.GetList(c => true);
@@ -54,22 +56,25 @@ namespace RegistroDetalle.UI.COTIZACION
             cotizacionArticulos.CotizacionArticulosId = Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value);
             cotizacionArticulos.Fecha = fechaDateTimePicker.Value;
             cotizacionArticulos.Observaciones = observacionesTextBox.Text;
+           
 
             //Agregar cada linea del Grid al detalle
             foreach (DataGridViewRow item in detalledataGridView.Rows)
             {
+                
                 cotizacionArticulos.AgregarDetalle
-                    (
-                      ToInt(item.Cells["Id"].Value),
-                      ToInt(item.Cells["CotizacionArticulosId"].Value),
+                    (ToInt(item.Cells["id"].Value),
+                    cotizacionArticulos.CotizacionArticulosId,
                       ToInt(item.Cells["PersonaId"].Value),
                       ToInt(item.Cells["ArticuloId"].Value),
-                       ToInt(item.Cells[" Cantidad"].Value),
+                      Convert.ToString(item.Cells["Descripcion"].Value),
+                       ToInt(item.Cells["Cantidad"].Value),
                     ToDecimal(item.Cells["Precio"].Value),
                     ToDecimal(item.Cells["Importe"].Value)
+                   // Convert.ToString(item.Cells["articulos"].Value)
 
-              
-        
+
+
                   );
             }
             return cotizacionArticulos;
@@ -77,22 +82,30 @@ namespace RegistroDetalle.UI.COTIZACION
 
         private void LlenarCampos(CotizacionArticulos cotizacionArticulos)
         {
+            importe = 0;
             cotizacionArticulosIdnumericUpDown.Value = cotizacionArticulos.CotizacionArticulosId;
             fechaDateTimePicker.Value = cotizacionArticulos.Fecha;
             observacionesTextBox.Text = cotizacionArticulos.Observaciones;
 
+            foreach (var item in cotizacionArticulos.Detalle)
+            {
+                importe += item.Importe;
+            }
+            TotaltextBox.Text = importe.ToString();
             //Cargar el detalle al Grid
             detalledataGridView.DataSource = cotizacionArticulos.Detalle;
 
             //Ocultar columnas
             detalledataGridView.Columns["Id"].Visible = false;
-            detalledataGridView.Columns["ArticuloId"].Visible = true;
             detalledataGridView.Columns["PersonaId"].Visible = false;
             detalledataGridView.Columns["CotizacionArticulosId"].Visible = false;
-            
+            detalledataGridView.Columns["articulos"].Visible = false;
+
+
 
 
         }
+
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
@@ -100,9 +113,10 @@ namespace RegistroDetalle.UI.COTIZACION
             int id = Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value);
             CotizacionArticulos cotizacionArticulos = BLL.CotizacionArticulosBLL.Buscar(id);
 
-            if ( cotizacionArticulos != null)
+            if (cotizacionArticulos != null)
             {
                 LlenarCampos(cotizacionArticulos);
+                
             }
             else
                 MessageBox.Show("No se encontro!", "Fallo",
@@ -130,26 +144,38 @@ namespace RegistroDetalle.UI.COTIZACION
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
             List<CotizacionArticulosDetalle> detalle = new List<CotizacionArticulosDetalle>();
+            CotizacionArticulos cotizacionArticulos = new CotizacionArticulos();
 
             if (detalledataGridView.DataSource != null)
             {
-                detalle = (List<CotizacionArticulosDetalle>)detalledataGridView.DataSource;
+                cotizacionArticulos.Detalle = (List<CotizacionArticulosDetalle>)detalledataGridView.DataSource;
             }
 
             //Agregar un nuevo detalle con los datos introducidos.
-            detalle.Add(
+            cotizacionArticulos.Detalle.Add(
                 new CotizacionArticulosDetalle(
-                   
+                    id: 0,
+                   personaId: (int)personaComboBox.SelectedValue,
+                   cotizacionArticulosId: (int)Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value),
                     articuloId: (int)articuloComboBox.SelectedValue,
-                     descripcion: (string)articuloComboBox.Text,
-                    cantidad: (int)Convert.ToInt32(cantidadTextBox.Text),
-                    precio: (int)Convert.ToInt32(precioTextBox.Text),
-                    importe: (int)Convert.ToInt32(importeTextBox.Text)
+                     descripcion: (string)BLL.ArticulosBLL.RetornarDescripcion(articuloComboBox.Text),
+                    cantidad: (int)Convert.ToInt32(cantidadnumericUpDown.Value),
+                    precio: (decimal)Convert.ToDecimal(precioTextBox.Text),
+                    importe: (decimal)Convert.ToDecimal(importeTextBox.Text)
+                    //Articulo: new Articulos(articuloComboBox.Text)
                 ));
 
             //Cargar el detalle al Grid
             detalledataGridView.DataSource = null;
-            detalledataGridView.DataSource = detalle;
+            detalledataGridView.DataSource = cotizacionArticulos.Detalle;
+
+            
+            importe += BLL.CotizacionArticulosBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadnumericUpDown.Value));
+            
+
+
+
+            TotaltextBox.Text = importe.ToString();
         }
 
         private void Guardarbutton_Click(object sender, EventArgs e)
@@ -157,14 +183,14 @@ namespace RegistroDetalle.UI.COTIZACION
             CotizacionArticulos cotizacionArticulos = LlenaClase();
             bool Paso = false;
 
-          /*  if (HayErrores())
-            {
-                MessageBox.Show("Favor revisar todos los campos", "Validación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }*/
+            /*  if (HayErrores())
+              {
+                  MessageBox.Show("Favor revisar todos los campos", "Validación",
+                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  return;
+              }*/
 
-           
+
 
             //Determinar si es Guardar o Modificar
             if (cotizacionArticulosIdnumericUpDown.Value == 0)
@@ -185,7 +211,7 @@ namespace RegistroDetalle.UI.COTIZACION
             //Informar el resultado
             if (Paso)
             {
-               Limpiar();
+                Limpiar();
                 MessageBox.Show("Guardado!!", "Exito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -212,7 +238,7 @@ namespace RegistroDetalle.UI.COTIZACION
         private void Nuevobutton_Click(object sender, EventArgs e)
         {
             Limpiar();
-     
+
         }
 
         public void Limpiar()
@@ -220,7 +246,9 @@ namespace RegistroDetalle.UI.COTIZACION
             cotizacionArticulosIdnumericUpDown.Value = 0;
             fechaDateTimePicker.Value = DateTime.Now;
             observacionesTextBox.Clear();
-
+            TotaltextBox.Clear();
+            cantidadnumericUpDown.Value = 0;
+            importeTextBox.Clear();
             detalledataGridView.DataSource = null;
             //  MyerrorProvider.Clear();
         }
@@ -237,24 +265,37 @@ namespace RegistroDetalle.UI.COTIZACION
 
         private void articuloComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            foreach (var item in BLL.ArticulosBLL.GetList(x => x.Descripcion == articuloComboBox.Text))
+
+            foreach (var item in BLL.ArticulosBLL.GetList(x => x.Nombre == articuloComboBox.Text))
             {
                 precioTextBox.Text = item.Precio.ToString();
-                
+
 
 
             }
 
         }
 
-        private void cantidadTextBox_TextChanged(object sender, EventArgs e)
+
+
+        private void precioTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cantidadnumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = Convert.ToDecimal(precioTextBox.Text);
-            int cantidad = Convert.ToInt32(cantidadTextBox.Text);
-            decimal resultado = BLL.CotizacionArticulosBLL.CalcularImporte(precio, cantidad);
+            int cantidad = Convert.ToInt32(cantidadnumericUpDown.Value);
 
-            importeTextBox.Text = Convert.ToString(resultado.ToString());
+
+            importeTextBox.Text = BLL.CotizacionArticulosBLL.CalcularImporte(precio, cantidad).ToString();
+
+        }
+
+        private void importeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

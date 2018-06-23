@@ -52,7 +52,7 @@
             this.Removerbutton = new System.Windows.Forms.Button();
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cantidadTextBox = new System.Windows.Forms.TextBox();
+            this.cantidadnumericUpDown = new System.Windows.Forms.NumericUpDown();
             cotizacionArticulosIdLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
             observacionesLabel = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             importeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.detalledataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionArticulosIdnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidadnumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // cotizacionArticulosIdLabel
@@ -177,8 +178,10 @@
             // 
             this.precioTextBox.Location = new System.Drawing.Point(299, 123);
             this.precioTextBox.Name = "precioTextBox";
+            this.precioTextBox.ReadOnly = true;
             this.precioTextBox.Size = new System.Drawing.Size(100, 20);
             this.precioTextBox.TabIndex = 14;
+            this.precioTextBox.TextChanged += new System.EventHandler(this.precioTextBox_TextChanged);
             // 
             // importeTextBox
             // 
@@ -187,6 +190,7 @@
             this.importeTextBox.ReadOnly = true;
             this.importeTextBox.Size = new System.Drawing.Size(100, 20);
             this.importeTextBox.TabIndex = 16;
+            this.importeTextBox.TextChanged += new System.EventHandler(this.importeTextBox_TextChanged);
             // 
             // Agregarbutton
             // 
@@ -203,7 +207,7 @@
             this.detalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.detalledataGridView.Location = new System.Drawing.Point(12, 149);
             this.detalledataGridView.Name = "detalledataGridView";
-            this.detalledataGridView.Size = new System.Drawing.Size(597, 233);
+            this.detalledataGridView.Size = new System.Drawing.Size(765, 233);
             this.detalledataGridView.TabIndex = 18;
             // 
             // Nuevobutton
@@ -265,33 +269,35 @@
             // 
             // TotaltextBox
             // 
-            this.TotaltextBox.Location = new System.Drawing.Point(484, 410);
+            this.TotaltextBox.Location = new System.Drawing.Point(501, 403);
             this.TotaltextBox.Name = "TotaltextBox";
+            this.TotaltextBox.ReadOnly = true;
             this.TotaltextBox.Size = new System.Drawing.Size(100, 20);
             this.TotaltextBox.TabIndex = 25;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(504, 391);
+            this.label1.Location = new System.Drawing.Point(521, 384);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 26;
             this.label1.Text = "Total";
             // 
-            // cantidadTextBox
+            // cantidadnumericUpDown
             // 
-            this.cantidadTextBox.Location = new System.Drawing.Point(168, 123);
-            this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(100, 20);
-            this.cantidadTextBox.TabIndex = 12;
-            this.cantidadTextBox.TextChanged += new System.EventHandler(this.cantidadTextBox_TextChanged);
+            this.cantidadnumericUpDown.Location = new System.Drawing.Point(163, 122);
+            this.cantidadnumericUpDown.Name = "cantidadnumericUpDown";
+            this.cantidadnumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.cantidadnumericUpDown.TabIndex = 27;
+            this.cantidadnumericUpDown.ValueChanged += new System.EventHandler(this.cantidadnumericUpDown_ValueChanged);
             // 
             // CotizacionArticulosf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 506);
+            this.ClientSize = new System.Drawing.Size(789, 506);
+            this.Controls.Add(this.cantidadnumericUpDown);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TotaltextBox);
             this.Controls.Add(this.Removerbutton);
@@ -307,7 +313,6 @@
             this.Controls.Add(precioLabel);
             this.Controls.Add(this.precioTextBox);
             this.Controls.Add(cantidadLabel);
-            this.Controls.Add(this.cantidadTextBox);
             this.Controls.Add(articuloIdLabel);
             this.Controls.Add(this.articuloComboBox);
             this.Controls.Add(personaIdLabel);
@@ -322,6 +327,7 @@
             this.Load += new System.EventHandler(this.CotizacionArticulosf_Load);
             ((System.ComponentModel.ISupportInitialize)(this.detalledataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionArticulosIdnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidadnumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +350,6 @@
         private System.Windows.Forms.Button Removerbutton;
         private System.Windows.Forms.TextBox TotaltextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox cantidadTextBox;
+        private System.Windows.Forms.NumericUpDown cantidadnumericUpDown;
     }
 }

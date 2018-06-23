@@ -37,7 +37,7 @@ create Table CotizacionArticulos
 go
 
 go
-create Table CotizacionArticulosDetalle
+create Table CotizacionArticulosDetalles
 (
 			Id int primary key identity(1,1),
             CotizacionArticulosId  int,

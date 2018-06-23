@@ -32,7 +32,7 @@ namespace RegistroDetalle.BLL
 
         public static bool Eliminar(int id)
         {
-            bool paso=false;
+            bool paso = false;
             Contexto contexto = new Contexto();
 
             try
@@ -49,7 +49,8 @@ namespace RegistroDetalle.BLL
                 contexto.Dispose();
 
 
-            } catch (Exception) { throw; }
+            }
+            catch (Exception) { throw; }
             return paso;
         }
 
@@ -58,7 +59,8 @@ namespace RegistroDetalle.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            try {
+            try
+            {
                 Repositorio<CotizacionArticulosDetalle> repositorio = new Repositorio<CotizacionArticulosDetalle>(new Contexto());
                 List<CotizacionArticulosDetalle> detalle = new List<CotizacionArticulosDetalle>();
                 List<CotizacionArticulosDetalle> cotizacionArticulosDetalles = new List<CotizacionArticulosDetalle>();
@@ -73,13 +75,21 @@ namespace RegistroDetalle.BLL
                 foreach (var item in detalle)
                 {
 
-                    if (cotizacionArticulos.Detalle.Count() != detalle.Count())
+                    if (cotizacionArticulos.Detalle.Count() < detalle.Count())
                     {
-                        if (cotizacionArticulosDetalles.Exists(x => x.Id != item.Id))
+                        if (cotizacionArticulos.Detalle.Count() == 0)
+                        {
+                            repositorio.Eliminar(item.Id);
+                        }
+                        else if (cotizacionArticulosDetalles.Exists(x => x.Id != item.Id))
                         {
 
                             repositorio.Eliminar(item.Id);
                         }
+                    }
+                    else
+                    {
+                        break;
                     }
 
                 }
@@ -93,11 +103,11 @@ namespace RegistroDetalle.BLL
                 }
 
                 contexto.Entry(cotizacionArticulos).State = EntityState.Modified;
-                if(contexto.SaveChanges() > 0)
+                if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
                 }
-                contexto.Dispose();
+                // contexto.Dispose();
             }
             catch (Exception) { throw; }
             return paso;
@@ -112,23 +122,24 @@ namespace RegistroDetalle.BLL
             try
             {
                 cotizacionArticulos = contexto.Cotizacion.Find(id);
-                if( cotizacionArticulos != null)
+                if (cotizacionArticulos != null)
                 {
                     cotizacionArticulos.Detalle.Count();
 
                     foreach (var item in cotizacionArticulos.Detalle)
                     {
-                       
+
                         string s = item.articulos.Nombre;
                     }
 
                 }
                 contexto.Dispose();
-            } catch (Exception) { throw; }
+            }
+            catch (Exception) { throw; }
             return cotizacionArticulos;
         }
 
-        public static List<CotizacionArticulos> GetList(Expression<Func<CotizacionArticulos,bool>> expression)
+        public static List<CotizacionArticulos> GetList(Expression<Func<CotizacionArticulos, bool>> expression)
         {
             Contexto contexto = new Contexto();
             List<CotizacionArticulos> cotizacionArticulos = new List<CotizacionArticulos>();
@@ -138,7 +149,8 @@ namespace RegistroDetalle.BLL
                 cotizacionArticulos = contexto.Cotizacion.Where(expression).ToList();
 
                 contexto.Dispose();
-            } catch (Exception) { throw; }
+            }
+            catch (Exception) { throw; }
             return cotizacionArticulos;
 
         }
@@ -147,5 +159,6 @@ namespace RegistroDetalle.BLL
         {
             return Convert.ToDecimal(precio) * Convert.ToInt32(cantidad);
         }
+
     }
 }

@@ -23,9 +23,9 @@ namespace RegistroDetalle.ENTIDADES
 
         }
 
-        public void AgregarDetalle(int id, int CotizacionArticulosId,int PersonaId,int ArticuloId,int Cantidad,decimal Precio,decimal Importe)
+        public void AgregarDetalle(int id ,int CotizacionArticulosId,int PersonaId ,int ArticuloId,string descripcion,int Cantidad,decimal Precio,decimal Importe)
         {
-            this.Detalle.Add(new CotizacionArticulosDetalle(id, CotizacionArticulosId, PersonaId, ArticuloId, Cantidad, Precio, Importe));
+            this.Detalle.Add(new CotizacionArticulosDetalle(id, CotizacionArticulosId, PersonaId, ArticuloId,descripcion, Cantidad, Precio, Importe));
         }
    }
 }

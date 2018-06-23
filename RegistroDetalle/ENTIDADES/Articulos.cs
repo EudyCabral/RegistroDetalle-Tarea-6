@@ -23,10 +23,20 @@ namespace RegistroDetalle.ENTIDADES
             Descripcion = string.Empty;
             Cantidad = 0;*/
 
+        public Articulos(string nombre)
+        {
+            Nombre = nombre;
+
+        }
+
         public Articulos()
         {
-           
-
+            ArticuloId = 0;
+            Fecha = DateTime.Now;
+            Nombre = string.Empty;
+            Descripcion = string.Empty;
+            Cantidad = 0;
+            Precio = 0;
         }
 
         public override string ToString()

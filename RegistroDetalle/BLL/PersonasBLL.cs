@@ -116,5 +116,8 @@ namespace RegistroDetalle.BLL
             return Personas;
         }
 
+        
+        
+        
     }
 }
