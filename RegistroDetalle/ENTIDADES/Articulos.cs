@@ -15,13 +15,7 @@ namespace RegistroDetalle.ENTIDADES
         public string Descripcion { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
-                                           //  public string CantidadCotizada { get; set; }
-
-        /* ArticuloId = 0;
-            Fecha = DateTime.Now;
-            Nombre = string.Empty;
-            Descripcion = string.Empty;
-            Cantidad = 0;*/
+                                           
 
         public Articulos(string nombre)
         {

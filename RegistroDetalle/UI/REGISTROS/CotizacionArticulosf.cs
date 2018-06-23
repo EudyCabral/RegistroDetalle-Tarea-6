@@ -152,30 +152,39 @@ namespace RegistroDetalle.UI.COTIZACION
             }
 
             //Agregar un nuevo detalle con los datos introducidos.
-            cotizacionArticulos.Detalle.Add(
-                new CotizacionArticulosDetalle(
-                    id: 0,
-                   personaId: (int)personaComboBox.SelectedValue,
-                   cotizacionArticulosId: (int)Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value),
-                    articuloId: (int)articuloComboBox.SelectedValue,
-                     descripcion: (string)BLL.ArticulosBLL.RetornarDescripcion(articuloComboBox.Text),
-                    cantidad: (int)Convert.ToInt32(cantidadnumericUpDown.Value),
-                    precio: (decimal)Convert.ToDecimal(precioTextBox.Text),
-                    importe: (decimal)Convert.ToDecimal(importeTextBox.Text)
+
+            if (string.IsNullOrEmpty(importeTextBox.Text))
+            {
+                MessageBox.Show("Importe esta vacio , Llene cantidad", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cotizacionArticulos.Detalle.Add(
+                    new CotizacionArticulosDetalle(
+                        id: 0,
+                       personaId: (int)personaComboBox.SelectedValue,
+                       cotizacionArticulosId: (int)Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value),
+                        articuloId: (int)articuloComboBox.SelectedValue,
+                         descripcion: (string)BLL.ArticulosBLL.RetornarDescripcion(articuloComboBox.Text),
+                        cantidad: (int)Convert.ToInt32(cantidadnumericUpDown.Value),
+                        precio: (decimal)Convert.ToDecimal(precioTextBox.Text),
+                        importe: (decimal)Convert.ToDecimal(importeTextBox.Text)
                     //Articulo: new Articulos(articuloComboBox.Text)
-                ));
-
-            //Cargar el detalle al Grid
-            detalledataGridView.DataSource = null;
-            detalledataGridView.DataSource = cotizacionArticulos.Detalle;
-
-            
-            importe += BLL.CotizacionArticulosBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadnumericUpDown.Value));
-            
+                    ));
 
 
+                //Cargar el detalle al Grid
+                detalledataGridView.DataSource = null;
+                detalledataGridView.DataSource = cotizacionArticulos.Detalle;
 
-            TotaltextBox.Text = importe.ToString();
+
+                importe += BLL.CotizacionArticulosBLL.CalcularImporte(Convert.ToDecimal(precioTextBox.Text), Convert.ToInt32(cantidadnumericUpDown.Value));
+
+
+
+
+                TotaltextBox.Text = importe.ToString();
+            }
         }
 
         private void Guardarbutton_Click(object sender, EventArgs e)
@@ -183,28 +192,34 @@ namespace RegistroDetalle.UI.COTIZACION
             CotizacionArticulos cotizacionArticulos = LlenaClase();
             bool Paso = false;
 
-            /*  if (HayErrores())
+             if (Validar())
               {
                   MessageBox.Show("Favor revisar todos los campos", "Validación",
                       MessageBoxButtons.OK, MessageBoxIcon.Error);
                   return;
-              }*/
+              }
 
 
 
             //Determinar si es Guardar o Modificar
+
+
             if (cotizacionArticulosIdnumericUpDown.Value == 0)
+            {
                 Paso = BLL.CotizacionArticulosBLL.Guardar(cotizacionArticulos);
+                HayErrores.Clear();
+            }
             else
             {
-                //todo: validar que exista.
-                Paso = BLL.CotizacionArticulosBLL.Editar(cotizacionArticulos);
 
+                Paso = BLL.CotizacionArticulosBLL.Editar(cotizacionArticulos);
+                HayErrores.Clear();
+            }
 
                 //Esto es para en caso de que se elimine algun elemento del datagrid y se modifique que elimine el detalle 
 
 
-            }
+            
 
 
 
@@ -222,17 +237,24 @@ namespace RegistroDetalle.UI.COTIZACION
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value);
-
-            //todo: validar que exista
-            if (BLL.CotizacionArticulosBLL.Eliminar(id))
+           if (ValidarE())
             {
-                MessageBox.Show("Eliminado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
+
+
+                MessageBox.Show("Favor Llenar Casilla!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
-                MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            {
+                int id = Convert.ToInt32(cotizacionArticulosIdnumericUpDown.Value);
+                if (BLL.CotizacionArticulosBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                }
+                else
+                    MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
         }
 
         private void Nuevobutton_Click(object sender, EventArgs e)
@@ -250,18 +272,10 @@ namespace RegistroDetalle.UI.COTIZACION
             cantidadnumericUpDown.Value = 0;
             importeTextBox.Clear();
             detalledataGridView.DataSource = null;
-            //  MyerrorProvider.Clear();
+            HayErrores.Clear();
         }
 
-        private void CotizacionArticulosf_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void personaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void articuloComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -278,10 +292,7 @@ namespace RegistroDetalle.UI.COTIZACION
 
 
 
-        private void precioTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void cantidadnumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -293,7 +304,55 @@ namespace RegistroDetalle.UI.COTIZACION
 
         }
 
-        private void importeTextBox_TextChanged(object sender, EventArgs e)
+        private bool Validar()
+        {
+            bool paso = false;
+
+            
+
+            if (String.IsNullOrWhiteSpace(observacionesTextBox.Text))
+            {
+                HayErrores.SetError(observacionesTextBox,
+                   "No debes dejar la Observacion vacia");
+                paso = true;
+            }
+
+
+            if (cantidadnumericUpDown.Value == 0)
+            {
+                HayErrores.SetError(cantidadnumericUpDown,
+                   "No debes dejar la Cantidad Vacia vacia");
+                paso = true;
+            }
+
+            if (detalledataGridView.RowCount == 0)
+            {
+                HayErrores.SetError(detalledataGridView,
+                    "Es obligatorio Agregar un Articulo ");
+                paso = true ;
+            }
+
+            return paso;
+        }
+
+        private bool ValidarE()
+        {
+            bool paso = false;
+
+
+
+            if (cotizacionArticulosIdnumericUpDown.Value == 0)
+            {
+                HayErrores.SetError(cotizacionArticulosIdnumericUpDown,
+                   "No debes dejar la Cotizacion Id Vacio");
+                paso = true;
+            }
+
+          
+            return paso;
+        }
+
+        private void CotizacionArticulosf_Load(object sender, EventArgs e)
         {
 
         }

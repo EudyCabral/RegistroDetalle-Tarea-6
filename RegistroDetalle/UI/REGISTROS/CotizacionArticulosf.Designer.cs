@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label cotizacionArticulosIdLabel;
             System.Windows.Forms.Label fechaLabel;
             System.Windows.Forms.Label observacionesLabel;
@@ -53,6 +54,7 @@
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cantidadnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HayErrores = new System.Windows.Forms.ErrorProvider(this.components);
             cotizacionArticulosIdLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
             observacionesLabel = new System.Windows.Forms.Label();
@@ -64,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.detalledataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionArticulosIdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HayErrores)).BeginInit();
             this.SuspendLayout();
             // 
             // cotizacionArticulosIdLabel
@@ -162,7 +165,6 @@
             this.personaComboBox.Name = "personaComboBox";
             this.personaComboBox.Size = new System.Drawing.Size(207, 21);
             this.personaComboBox.TabIndex = 8;
-            this.personaComboBox.SelectedIndexChanged += new System.EventHandler(this.personaComboBox_SelectedIndexChanged);
             // 
             // articuloComboBox
             // 
@@ -181,7 +183,6 @@
             this.precioTextBox.ReadOnly = true;
             this.precioTextBox.Size = new System.Drawing.Size(100, 20);
             this.precioTextBox.TabIndex = 14;
-            this.precioTextBox.TextChanged += new System.EventHandler(this.precioTextBox_TextChanged);
             // 
             // importeTextBox
             // 
@@ -190,7 +191,6 @@
             this.importeTextBox.ReadOnly = true;
             this.importeTextBox.Size = new System.Drawing.Size(100, 20);
             this.importeTextBox.TabIndex = 16;
-            this.importeTextBox.TextChanged += new System.EventHandler(this.importeTextBox_TextChanged);
             // 
             // Agregarbutton
             // 
@@ -269,7 +269,7 @@
             // 
             // TotaltextBox
             // 
-            this.TotaltextBox.Location = new System.Drawing.Point(501, 403);
+            this.TotaltextBox.Location = new System.Drawing.Point(534, 410);
             this.TotaltextBox.Name = "TotaltextBox";
             this.TotaltextBox.ReadOnly = true;
             this.TotaltextBox.Size = new System.Drawing.Size(100, 20);
@@ -278,7 +278,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(521, 384);
+            this.label1.Location = new System.Drawing.Point(557, 394);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 26;
@@ -291,6 +291,10 @@
             this.cantidadnumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.cantidadnumericUpDown.TabIndex = 27;
             this.cantidadnumericUpDown.ValueChanged += new System.EventHandler(this.cantidadnumericUpDown_ValueChanged);
+            // 
+            // HayErrores
+            // 
+            this.HayErrores.ContainerControl = this;
             // 
             // CotizacionArticulosf
             // 
@@ -328,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.detalledataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionArticulosIdnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HayErrores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,5 +356,6 @@
         private System.Windows.Forms.TextBox TotaltextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown cantidadnumericUpDown;
+        private System.Windows.Forms.ErrorProvider HayErrores;
     }
 }

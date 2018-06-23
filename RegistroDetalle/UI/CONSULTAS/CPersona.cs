@@ -246,8 +246,9 @@ namespace RegistroDetalle.UI.CONSULTAS
             return paso;
         }
 
+        private void CPersona_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

@@ -38,8 +38,16 @@ namespace RegistroDetalle.BLL
             try
             {
                 CotizacionArticulos cotizacionArticulos = contexto.Cotizacion.Find(id);
-                cotizacionArticulos.Detalle.Count();
-                contexto.Cotizacion.Remove(cotizacionArticulos);
+               
+              
+               if(cotizacionArticulos != null)
+                {
+                    cotizacionArticulos.Detalle.Count();
+                    contexto.Cotizacion.Remove(cotizacionArticulos);
+                }
+            
+                   
+                
 
                 if (contexto.SaveChanges() > 0)
                 {
@@ -61,48 +69,41 @@ namespace RegistroDetalle.BLL
             Contexto contexto = new Contexto();
             try
             {
-                Repositorio<CotizacionArticulosDetalle> repositorio = new Repositorio<CotizacionArticulosDetalle>(new Contexto());
-                List<CotizacionArticulosDetalle> detalle = new List<CotizacionArticulosDetalle>();
-                List<CotizacionArticulosDetalle> cotizacionArticulosDetalles = new List<CotizacionArticulosDetalle>();
+                var cotizaciones = CotizacionArticulosBLL.Buscar(cotizacionArticulos.CotizacionArticulosId);
 
-                detalle = repositorio.GetList(x => x.CotizacionArticulosId == cotizacionArticulos.CotizacionArticulosId);
 
-                for (int x = 0; x < cotizacionArticulos.Detalle.Count(); x++)
-                {
-                    cotizacionArticulosDetalles.Add(cotizacionArticulos.Detalle.ElementAt(x));
-                }
 
-                foreach (var item in detalle)
+                
+
+                if (cotizaciones != null)
                 {
 
-                    if (cotizacionArticulos.Detalle.Count() < detalle.Count())
+                    foreach (var item in cotizaciones.Detalle)//recorrer el detalle aterior
                     {
-                        if (cotizacionArticulos.Detalle.Count() == 0)
-                        {
-                            repositorio.Eliminar(item.Id);
-                        }
-                        else if (cotizacionArticulosDetalles.Exists(x => x.Id != item.Id))
-                        {
+                        //restar todas las visitas
+                        contexto.articulos.Find(item.ArticuloId).Cantidad -= item.Cantidad;
 
-                            repositorio.Eliminar(item.Id);
+                        //determinar si el item no esta en el detalle actual
+                        if (!cotizacionArticulos.Detalle.ToList().Exists(v => v.Id == item.Id))
+                        {
+                            contexto.articulos.Find(item.ArticuloId).Cantidad -= item.Cantidad;
+                            item.articulos = null; //quitar la ciudad para que EF no intente hacerle nada
+                            contexto.Entry(item).State = EntityState.Deleted;
                         }
                     }
-                    else
+
+                    foreach (var item in cotizacionArticulos.Detalle)
                     {
-                        break;
+                        //Muy importante indicar que pasara con la entidad del detalle
+                        var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
+                        contexto.Entry(item).State = estado;
                     }
 
+                    contexto.Entry(cotizacionArticulos).State = EntityState.Modified;
                 }
-
                 //recorrer el detalle
-                foreach (var item in cotizacionArticulos.Detalle)
-                {
-                    //Muy importante indicar que pasara con la entidad del detalle
-                    var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
-                    contexto.Entry(item).State = estado;
-                }
+            
 
-                contexto.Entry(cotizacionArticulos).State = EntityState.Modified;
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
@@ -159,6 +160,8 @@ namespace RegistroDetalle.BLL
         {
             return Convert.ToDecimal(precio) * Convert.ToInt32(cantidad);
         }
+
+
 
     }
 }

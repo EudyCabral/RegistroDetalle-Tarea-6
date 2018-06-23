@@ -36,7 +36,7 @@ namespace RegistroDetalle.UI.REGISTROS
             bool Paso = false;
             Personas personas = Llenaclase();
 
-            if (ValidarGuardar())
+            if (Validar())
             {
                 MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -66,7 +66,7 @@ namespace RegistroDetalle.UI.REGISTROS
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
 
-            if (Validar())
+            if (ValidarBE())
             {
                 MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -97,7 +97,7 @@ namespace RegistroDetalle.UI.REGISTROS
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            if (ValidarEliminar())
+            if (ValidarBE())
             {
                 MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -135,23 +135,11 @@ namespace RegistroDetalle.UI.REGISTROS
             GeneralerrorProvider.Clear();
         }
 
-        private bool Validar()
-        {
-            bool error = false;
-            if (personaIdNumericUpDown.Value == 0)
-            {
-                GeneralerrorProvider.SetError(personaIdNumericUpDown, "Llenar Casilla Persona ID");
-                error = true;
-            }
 
-            return error;
-        }
-
-
-        public bool ValidarEliminar()
+        public bool ValidarBE()
         {
             bool Error = false;
-         
+
             if (personaIdNumericUpDown.Value == 0)
             {
                 GeneralerrorProvider.SetError(personaIdNumericUpDown, "Llenar Casilla Persona ID");
@@ -160,22 +148,37 @@ namespace RegistroDetalle.UI.REGISTROS
             return Error;
         }
 
-        public bool ValidarGuardar()
+            public bool Validar()
         {
             bool Error = false;
 
-            if (String.IsNullOrEmpty(nombresTextBox.Text))
+          
+
+            if (String.IsNullOrWhiteSpace(nombresTextBox.Text))
             {
                 GeneralerrorProvider.SetError(nombresTextBox, "Llenar Casilla de Nombre");
                 Error = true;
             }
 
-
-            if (String.IsNullOrEmpty(direccionTextBox.Text))
+            if (String.IsNullOrWhiteSpace(telefonoMaskedTextBox.Text))
             {
-                GeneralerrorProvider.SetError(direccionTextBox, "Llenar Casilla de Direccion");
+                GeneralerrorProvider.SetError(telefonoMaskedTextBox, "Llenar Casilla de Telefono");
                 Error = true;
             }
+
+            if (String.IsNullOrWhiteSpace(cedulaMaskedTextBox.Text))
+            {
+                GeneralerrorProvider.SetError(cedulaMaskedTextBox, "Llenar Casilla de Nombre");
+                Error = true;
+            }
+
+            if (String.IsNullOrWhiteSpace(direccionTextBox.Text) )
+                {
+                    GeneralerrorProvider.SetError(direccionTextBox, "Llenar Casilla de Direccion");
+                    Error = true;
+                }
+            
+           
             return Error;
         }
 

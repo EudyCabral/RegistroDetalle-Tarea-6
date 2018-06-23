@@ -183,6 +183,7 @@
             this.Controls.Add(this.FiltrocomboBox);
             this.Name = "CPersona";
             this.Text = "Consulta de Personas";
+            this.Load += new System.EventHandler(this.CPersona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).EndInit();
             this.ResumeLayout(false);

@@ -106,7 +106,7 @@ namespace RegistroDetalle.UI.REGISTROS
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            if (ValidarEliminar())
+            if (Validar())
             {
                 MessageBox.Show("Favor Llenar Casilla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -154,18 +154,7 @@ namespace RegistroDetalle.UI.REGISTROS
         }
         //
 
-        public bool ValidarEliminar()
-        {
-            bool Error = false;
-
-            if (articuloIdNumericUpDown.Value == 0)
-            {
-                GeneralerrorProvider.SetError(articuloIdNumericUpDown, "Llenar Casilla Persona ID");
-                Error = true;
-            }
-            return Error;
-        }
-
+  
         public bool ValidarGuardar()
         {
             bool Error = false;
