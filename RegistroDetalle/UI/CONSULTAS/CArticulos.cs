@@ -162,7 +162,44 @@ namespace RegistroDetalle.UI.CONSULTAS
 
                     break;
 
-                case 4:
+                case 4:// Precio
+
+                    if (Validar(1))
+                    {
+                        MessageBox.Show("Favor Llenar Casilla ", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (Validar(2))
+                    {
+                        MessageBox.Show("Dijite Numeros", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        int precio = Convert.ToInt32(CriteriotextBox.Text);
+                        if (FechacheckBox.Checked == true)
+                        {
+                            filtro = x => x.Precio == precio
+                        && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
+
+                        }
+                        else
+                        {
+                            filtro = x => x.Precio == precio;
+
+                        }
+                        if (BLL.ArticulosBLL.GetList(filtro).Count() == 0)
+                        {
+                            MessageBox.Show("Este Precio, No Existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        GeneralerrorProvider.Clear();
+                    }
+
+                    break;
+
+                case 5: //Todo
                     filtro = x => true;
                     if (BLL.ArticulosBLL.GetList(filtro).Count() == 0)
                     {
@@ -215,5 +252,9 @@ namespace RegistroDetalle.UI.CONSULTAS
             return paso;
         }
 
+        private void CArticulos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

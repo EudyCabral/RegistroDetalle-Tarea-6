@@ -18,6 +18,7 @@ namespace RegistroDetalle.ENTIDADES
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public decimal Importe { get; set; }
+        public string Descripcion { get; set; }
 
         [ForeignKey("ArticuloId")]
      
@@ -36,6 +37,14 @@ namespace RegistroDetalle.ENTIDADES
             Id = id;
             CotizacionArticulosId = cotizacionArticulosId;
             PersonaId = personaId;
+            ArticuloId = articuloId;
+            Cantidad = cantidad;
+            Precio = precio;
+            Importe = importe;
+        }
+        public CotizacionArticulosDetalle(int articuloId, string descripcion, int cantidad, decimal precio, decimal importe)
+        {
+            Descripcion = descripcion;
             ArticuloId = articuloId;
             Cantidad = cantidad;
             Precio = precio;

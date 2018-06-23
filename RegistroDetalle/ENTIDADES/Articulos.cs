@@ -14,7 +14,8 @@ namespace RegistroDetalle.ENTIDADES
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public int Cantidad { get; set; }
-        public string CantidadCotizada { get; set; }
+        public decimal Precio { get; set; }
+                                           //  public string CantidadCotizada { get; set; }
 
         /* ArticuloId = 0;
             Fecha = DateTime.Now;
@@ -30,7 +31,7 @@ namespace RegistroDetalle.ENTIDADES
 
         public override string ToString()
         {
-            return this.CantidadCotizada;
+            return this.Nombre;
         }
     }
 }

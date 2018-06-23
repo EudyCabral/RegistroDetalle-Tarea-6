@@ -21,7 +21,9 @@ create Table Articulos
             Fecha  DateTime,
             Nombre varchar(30),
             Descripcion  varchar(max),
-            Cantidad  int
+            Cantidad  int,
+			Precio money
+			
 );
 go
 
@@ -29,7 +31,7 @@ go
 create Table CotizacionArticulos
 (
 		 CotizacionArticulosId int primary key identity(1,1),
-         Fecha DateTime,
+         Fecha DateTime  ,
          Observaciones  varchar(max)
 );
 go
@@ -46,4 +48,6 @@ create Table CotizacionArticulosDetalle
             Importe money
 );
 go
+
+
 

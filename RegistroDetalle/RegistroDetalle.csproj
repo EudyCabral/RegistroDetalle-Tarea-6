@@ -80,11 +80,11 @@
     <Compile Include="UI\CONSULTAS\CPersona.Designer.cs">
       <DependentUpon>CPersona.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\COTIZACION\CotizacionArticulos.cs">
+    <Compile Include="UI\COTIZACION\CotizacionArticulosf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\COTIZACION\CotizacionArticulos.Designer.cs">
-      <DependentUpon>CotizacionArticulos.cs</DependentUpon>
+    <Compile Include="UI\COTIZACION\CotizacionArticulosf.Designer.cs">
+      <DependentUpon>CotizacionArticulosf.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\REGISTROS\Articulo.cs">
       <SubType>Form</SubType>
@@ -116,8 +116,8 @@
     <EmbeddedResource Include="UI\CONSULTAS\CPersona.resx">
       <DependentUpon>CPersona.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\COTIZACION\CotizacionArticulos.resx">
-      <DependentUpon>CotizacionArticulos.cs</DependentUpon>
+    <EmbeddedResource Include="UI\COTIZACION\CotizacionArticulosf.resx">
+      <DependentUpon>CotizacionArticulosf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\REGISTROS\Articulo.resx">
       <DependentUpon>Articulo.cs</DependentUpon>
@@ -141,7 +141,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DAL\SCRIPTS\Scripts.sql" />
   </ItemGroup>

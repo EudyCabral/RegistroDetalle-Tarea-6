@@ -34,12 +34,12 @@
             this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cotizacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cotizacionDeArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cotizacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cotizacionDeArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,16 +83,32 @@
             // personaToolStripMenuItem
             // 
             this.personaToolStripMenuItem.Name = "personaToolStripMenuItem";
-            this.personaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.personaToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.personaToolStripMenuItem.Text = "Persona";
             this.personaToolStripMenuItem.Click += new System.EventHandler(this.personaToolStripMenuItem_Click);
             // 
             // articuloToolStripMenuItem
             // 
             this.articuloToolStripMenuItem.Name = "articuloToolStripMenuItem";
-            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.articuloToolStripMenuItem.Text = "Articulo";
             this.articuloToolStripMenuItem.Click += new System.EventHandler(this.articuloToolStripMenuItem_Click);
+            // 
+            // cotizacionToolStripMenuItem
+            // 
+            this.cotizacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cotizacionDeArticulosToolStripMenuItem});
+            this.cotizacionToolStripMenuItem.Name = "cotizacionToolStripMenuItem";
+            this.cotizacionToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.cotizacionToolStripMenuItem.Text = "Cotizacion";
+            this.cotizacionToolStripMenuItem.Click += new System.EventHandler(this.cotizacionToolStripMenuItem_Click);
+            // 
+            // cotizacionDeArticulosToolStripMenuItem
+            // 
+            this.cotizacionDeArticulosToolStripMenuItem.Name = "cotizacionDeArticulosToolStripMenuItem";
+            this.cotizacionDeArticulosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.cotizacionDeArticulosToolStripMenuItem.Text = "Cotizacion de Articulos";
+            this.cotizacionDeArticulosToolStripMenuItem.Click += new System.EventHandler(this.cotizacionDeArticulosToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
@@ -122,21 +138,6 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // cotizacionToolStripMenuItem
-            // 
-            this.cotizacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cotizacionDeArticulosToolStripMenuItem});
-            this.cotizacionToolStripMenuItem.Name = "cotizacionToolStripMenuItem";
-            this.cotizacionToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.cotizacionToolStripMenuItem.Text = "Cotizacion";
-            // 
-            // cotizacionDeArticulosToolStripMenuItem
-            // 
-            this.cotizacionDeArticulosToolStripMenuItem.Name = "cotizacionDeArticulosToolStripMenuItem";
-            this.cotizacionDeArticulosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.cotizacionDeArticulosToolStripMenuItem.Text = "Cotizacion de Articulos";
-            this.cotizacionDeArticulosToolStripMenuItem.Click += new System.EventHandler(this.cotizacionDeArticulosToolStripMenuItem_Click);
             // 
             // MainForm
             // 

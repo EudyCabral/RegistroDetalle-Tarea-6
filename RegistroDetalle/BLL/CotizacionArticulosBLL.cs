@@ -119,7 +119,7 @@ namespace RegistroDetalle.BLL
                     foreach (var item in cotizacionArticulos.Detalle)
                     {
                        
-                        string s = item.articulos.CantidadCotizada;
+                        string s = item.articulos.Nombre;
                     }
 
                 }
@@ -141,6 +141,11 @@ namespace RegistroDetalle.BLL
             } catch (Exception) { throw; }
             return cotizacionArticulos;
 
+        }
+
+        public static decimal CalcularImporte(decimal precio, int cantidad)
+        {
+            return Convert.ToDecimal(precio) * Convert.ToInt32(cantidad);
         }
     }
 }

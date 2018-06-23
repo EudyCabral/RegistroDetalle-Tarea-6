@@ -51,8 +51,13 @@ namespace RegistroDetalle
 
         private void cotizacionDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CotizacionArticulos ca = new CotizacionArticulos();
+            CotizacionArticulosf ca = new CotizacionArticulosf();
             ca.Show();
+        }
+
+        private void cotizacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

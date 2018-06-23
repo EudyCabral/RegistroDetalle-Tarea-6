@@ -34,6 +34,7 @@
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label articuloIdLabel;
+            System.Windows.Forms.Label precioLabel;
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
@@ -44,11 +45,13 @@
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.articuloIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GeneralerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.precioTextBox = new System.Windows.Forms.TextBox();
             fechaLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             articuloIdLabel = new System.Windows.Forms.Label();
+            precioLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articuloIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).BeginInit();
@@ -66,7 +69,7 @@
             // cantidadLabel
             // 
             cantidadLabel.AutoSize = true;
-            cantidadLabel.Location = new System.Drawing.Point(36, 203);
+            cantidadLabel.Location = new System.Drawing.Point(35, 203);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(52, 13);
             cantidadLabel.TabIndex = 23;
@@ -75,7 +78,7 @@
             // descripcionLabel
             // 
             descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(36, 131);
+            descripcionLabel.Location = new System.Drawing.Point(35, 131);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(66, 13);
             descripcionLabel.TabIndex = 21;
@@ -84,7 +87,7 @@
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(36, 92);
+            nombreLabel.Location = new System.Drawing.Point(35, 92);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(47, 13);
             nombreLabel.TabIndex = 19;
@@ -93,7 +96,7 @@
             // articuloIdLabel
             // 
             articuloIdLabel.AutoSize = true;
-            articuloIdLabel.Location = new System.Drawing.Point(36, 35);
+            articuloIdLabel.Location = new System.Drawing.Point(35, 35);
             articuloIdLabel.Name = "articuloIdLabel";
             articuloIdLabel.Size = new System.Drawing.Size(57, 13);
             articuloIdLabel.TabIndex = 17;
@@ -101,7 +104,7 @@
             // 
             // Eliminarbutton
             // 
-            this.Eliminarbutton.Location = new System.Drawing.Point(351, 254);
+            this.Eliminarbutton.Location = new System.Drawing.Point(351, 272);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(75, 23);
             this.Eliminarbutton.TabIndex = 30;
@@ -111,7 +114,7 @@
             // 
             // Guardarbutton
             // 
-            this.Guardarbutton.Location = new System.Drawing.Point(216, 254);
+            this.Guardarbutton.Location = new System.Drawing.Point(216, 272);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(75, 23);
             this.Guardarbutton.TabIndex = 29;
@@ -121,7 +124,7 @@
             // 
             // Nuevobutton
             // 
-            this.Nuevobutton.Location = new System.Drawing.Point(81, 254);
+            this.Nuevobutton.Location = new System.Drawing.Point(81, 272);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
             this.Nuevobutton.TabIndex = 28;
@@ -180,11 +183,29 @@
             // 
             this.GeneralerrorProvider.ContainerControl = this;
             // 
+            // precioLabel
+            // 
+            precioLabel.AutoSize = true;
+            precioLabel.Location = new System.Drawing.Point(35, 241);
+            precioLabel.Name = "precioLabel";
+            precioLabel.Size = new System.Drawing.Size(40, 13);
+            precioLabel.TabIndex = 31;
+            precioLabel.Text = "Precio:";
+            // 
+            // precioTextBox
+            // 
+            this.precioTextBox.Location = new System.Drawing.Point(103, 238);
+            this.precioTextBox.Name = "precioTextBox";
+            this.precioTextBox.Size = new System.Drawing.Size(100, 20);
+            this.precioTextBox.TabIndex = 32;
+            // 
             // Articulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 308);
+            this.Controls.Add(precioLabel);
+            this.Controls.Add(this.precioTextBox);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
@@ -222,5 +243,6 @@
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.NumericUpDown articuloIdNumericUpDown;
         private System.Windows.Forms.ErrorProvider GeneralerrorProvider;
+        private System.Windows.Forms.TextBox precioTextBox;
     }
 }

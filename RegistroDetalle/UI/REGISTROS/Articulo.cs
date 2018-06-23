@@ -30,6 +30,7 @@ namespace RegistroDetalle.UI.REGISTROS
             articulos.Fecha = fechaDateTimePicker.Value;
             articulos.Descripcion = descripcionTextBox.Text;
             articulos.Cantidad = Convert.ToInt32(cantidadNumericUpDown.Value);
+            articulos.Precio = Convert.ToDecimal(precioTextBox.Text);
           
             return articulos;
         }
@@ -85,6 +86,7 @@ namespace RegistroDetalle.UI.REGISTROS
                     fechaDateTimePicker.Value = articulos.Fecha;
                     descripcionTextBox.Text = articulos.Descripcion;
                     cantidadNumericUpDown.Value = articulos.Cantidad;
+                    precioTextBox.Text = articulos.Precio.ToString();
                     
                    
                 }
@@ -133,7 +135,9 @@ namespace RegistroDetalle.UI.REGISTROS
             fechaDateTimePicker.Value = DateTime.Now;
             descripcionTextBox.Clear();
             cantidadNumericUpDown.Value = 0;
+            precioTextBox.Clear();
             GeneralerrorProvider.Clear();
+
            
         }
 
@@ -185,6 +189,14 @@ namespace RegistroDetalle.UI.REGISTROS
                 GeneralerrorProvider.SetError(cantidadNumericUpDown, "Llenar Casilla de Cantidad");
                 Error = true;
             }
+
+
+            if (String.IsNullOrEmpty(precioTextBox.Text))
+            {
+                GeneralerrorProvider.SetError(precioTextBox, "Llenar Casilla de Cantidad");
+                Error = true;
+            }
+
 
             return Error;
         }

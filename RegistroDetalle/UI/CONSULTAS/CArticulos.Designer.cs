@@ -60,7 +60,7 @@
             this.ConsultadataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConsultadataGridView.Location = new System.Drawing.Point(3, 98);
             this.ConsultadataGridView.Name = "ConsultadataGridView";
-            this.ConsultadataGridView.Size = new System.Drawing.Size(563, 301);
+            this.ConsultadataGridView.Size = new System.Drawing.Size(614, 301);
             this.ConsultadataGridView.TabIndex = 34;
             // 
             // label4
@@ -153,6 +153,7 @@
             "Nombre",
             "Descripcion",
             "Cantidad ",
+            "Precio",
             "Todos",
             "",
             "       "});
@@ -169,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 450);
+            this.ClientSize = new System.Drawing.Size(621, 450);
             this.Controls.Add(this.Imprimirbutton);
             this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.label4);
@@ -184,6 +185,7 @@
             this.Controls.Add(this.FiltrocomboBox);
             this.Name = "CArticulos";
             this.Text = "Consulta de Articulos";
+            this.Load += new System.EventHandler(this.CArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GeneralerrorProvider)).EndInit();
             this.ResumeLayout(false);
